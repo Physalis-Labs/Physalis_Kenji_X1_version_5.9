@@ -2,7 +2,7 @@
 * ------------------------------------------------- =( Physalis Labs. )= --------------------------------------------------- *
 * ---------------------------- =( Kenji-X1 Tele-Presence UGV Platform Firmware Source Code )= ------------------------------ *
 * -------------------------------------------------------------------------------------------------------------------------- *
-* --------------------------------------------- =( Firmware Version 5.8 )= ------------------------------------------------- *
+* --------------------------------------------- =( Firmware Version 5.9 )= ------------------------------------------------- *
 * ----------------------------- =( Automated UGV for Tele-Presence and Remote Operations )= -------------------------------- *
 * -------------------------------------------------------------------------------------------------------------------------- *
 * -------------------------------------------------------------------------------------------------------------------------- *
@@ -37,7 +37,7 @@
 * [Source File]: "main.c" Running all Input/Output Operations of [ATmega-1284p] MCU ---------------------------------------- *
 * -------------------------------------------------------------------------------------------------------------------------- *
 * -------------------------------------------------------------------------------------------------------------------------- *
-* [written by]:Dr.-Ing. Zohrabyan David, Physalis Labs. [Potsdam 26.10.2022], Hans-Marchwitza-Ring.21, 14473 --------------- *
+* [written by]:Dr.-Ing. Zohrabyan David, Physalis Labs. [Potsdam 30.10.2022], Hans-Marchwitza-Ring.21, 14473 --------------- *
 *****************************************************************************************************************************/
 //--------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------//
@@ -1524,7 +1524,7 @@ void help_Readme(){
 
   lcd_clear();
   lcd_home();
-  lcd_print_str("roboDrive 5.8 ");
+  lcd_print_str("roboDrive 5.9 ");
   lcd_print_str("Help / Readme");
 
   printString("\r\n\n ---> [roboDrive Engine Instruction set] <---\r\n");
@@ -2675,7 +2675,7 @@ int main(void){
 //        playNote(notes[16], currentNoteLength);
 //        _delay_ms(200);
 //        playNote(notes[15], currentNoteLength);
-        printString("\r\n\n -------  [Kenji-X1] / Firmware Version 5.8 \r\n\n");                            // version control
+        printString("\r\n\n -------  [Kenji-X1] / Firmware Version 5.9 \r\n\n");                            // version control
         printString("   -------  Compiled on: " __DATE__" / "__TIME__" \r\n\n");                        // Build Date and Time
         printString("   -------  Platform Status: [in development] ... \r\n\n");                    // Platform current status
         //printString("\r\n    -------  > roboDrive Instruction set <-------\r\n");                      // roboDrive OP-codes
@@ -2755,7 +2755,7 @@ int main(void){
             {
                 lcd_home();
                 lcd_print_str(" Physalis Labs  ");
-                lcd_print_str("roboDrive v_5.8");
+                lcd_print_str("roboDrive v_5.X");
                 pcf8575_Output(0b0000000000000000);    // I2C port expander's Ports(0-7) as input, Ports(10-17) as output
                 playNote(notes[psi], currentNoteLength);
                 _delay_ms(50);
