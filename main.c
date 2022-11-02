@@ -2250,10 +2250,12 @@ void pcLinkSerial(void){                         // computer link!, function to 
                     set_Kinetics();
                         break;
                 case 'W' :
-                    roboDrive("backward", drive_speed);         // swapped forward << >> backward due to hardware
+                    //roboDrive("backward", drive_speed);         // swapped forward << >> backward due to hardware
+                    roboDrive("forward", drive_speed);            // swapped forward << >> backward due to hardware
                         break;
                 case 'S' :
-                    roboDrive("forward", drive_speed);          // swapped forward << >> backward due to hardware
+                    //roboDrive("forward", drive_speed);          // swapped forward << >> backward due to hardware
+                    roboDrive("backward", drive_speed);           // swapped forward << >> backward due to hardware
                         break;
                 case 'A' :
                     roboDrive("left", drive_speed);
@@ -2290,18 +2292,17 @@ void pcLinkSerial(void){                         // computer link!, function to 
                    pcf8575_Output(0b0000000000000000);
                    printString("\r\nFront Light >> OFF\n");
                         break;
-                case 'Y' :
-                    //roboDrive_Arm_Testing();
-                    roboDrive_DeployLeft_Arm_State4(servo_speed_mecha_arms);
+                case 't' :
+                    roboDrive_Arm_Testing();              // service-mode, inverse Kinematics!, custom servo commands over roboDrive console
                         break;
                 case '#' :                     // apply only when both arms are streched, use this to recover from unknown states to parking
-                    roboDrive_RecoverArmsForParking(servo_speed_mecha_arms);                     // speed >> ((superfast) 0 - 255 (very slow))
+                    roboDrive_RecoverArmsForParking(servo_speed_mecha_arms);                   // speed >> ((superfast) 0 - 255 (very slow))
                         break;
                 case '7' :                       // apply only when left arm is streched, use this to recover from unknown states to parking
-                    roboDrive_RecoverLeftArmForParking(servo_speed_mecha_arms);                  // speed >> ((superfast) 0 - 255 (very slow))
+                    roboDrive_RecoverLeftArmForParking(servo_speed_mecha_arms);                // speed >> ((superfast) 0 - 255 (very slow))
                         break;
                 case '9' :                      // apply only when right arm is streched, use this to recover from unknown states to parking
-                    roboDrive_RecoverRightArmForParking(servo_speed_mecha_arms);                 // speed >> ((superfast) 0 - 255 (very slow))
+                    roboDrive_RecoverRightArmForParking(servo_speed_mecha_arms);               // speed >> ((superfast) 0 - 255 (very slow))
                         break;
                 case 'L' :                                      // ------------------- park arm (left) >> parked state (current draw ~ 0.6A)
                     roboDrive_ParkLeftArm(servo_speed_mecha_arms);                             // speed >> ((superfast) 0 - 255 (very slow))
@@ -2315,22 +2316,28 @@ void pcLinkSerial(void){                         // computer link!, function to 
                 case 'l' :                                // ------------------- deploy arm state-1 (right) >> state-1 (current draw ~ 0.6A)
                     roboDrive_DeployRight_Arm_State1(servo_speed_mecha_arms);                  // speed >> ((superfast) 0 - 255 (very slow))
                         break;
-                case 'k' :                                      // ------------- park arms (lef/right) >> parked state (current draw ~ 0.6A)
+                case 'k' :                                     // ------------- park arms (left/right) >> parked state (current draw ~ 0.6A)
                     roboDrive_ParkArms(servo_speed_mecha_arms);                                // speed >> ((superfast) 0 - 255 (very slow))
                         break;
-                case '1' :                              // ------------- deploy arms (state_1) (lef/right) >> state 1 (current draw ~ 0.75A)
+                case '1' :                          // ---------------- deploy arms (state_1) (left/right) >> state 1 (current draw ~ 0.75A)
                     roboDrive_DeployArmsState1(servo_speed_mecha_arms);                        // speed >> ((superfast) 0 - 255 (very slow))
                         break;
-                case '2' :                         // ------------- deploy arms (state_2) (lef/right) >> state 2 (current draw ~ 0.50-0.65A)
+                case '2' :                        // ------------- deploy arms (state_2) (left/right) >> state 2 (current draw ~ 0.50-0.65A)
                     roboDrive_DeployArmsState2(servo_speed_mecha_arms);                        // speed >> ((superfast) 0 - 255 (very slow))
                         break;
-                case '3' :                         // ------------- deploy arms (state_3) (lef/right) >> state 3 (current draw ~ 0.60-0.68A)
+                case '3' :                        // ------------- deploy arms (state_3) (left/right) >> state 3 (current draw ~ 0.60-0.68A)
                     roboDrive_DeployArmsState3(servo_speed_mecha_arms);                        // speed >> ((superfast) 0 - 255 (very slow))
                         break;
-                case '-' :                                // ------------- activate arms ((lef/right) >> state 4 (current draw ~ 0.68-0.70A)
+                case ',' :                    // ------------- deploy left-Mecha Arm (state_4) (left) >> state-4 (current draw ~ 0.60-0.68A)
+                    roboDrive_DeployLeft_Arm_State4(servo_speed_mecha_arms);                   // speed >> ((superfast) 0 - 255 (very slow))
+                        break;
+                case '.' :                          // -------- park left-Mecha Arm (state_4) (left) >> parked state-4 (current draw ~ 0.6A)
+                    roboDrive_ParkLeft_Arm_fromState4(servo_speed_mecha_arms);                 // speed >> ((superfast) 0 - 255 (very slow))
+                        break;
+                case '-' :                               // ------------- activate arms ((left/right) >> state 4 (current draw ~ 0.68-0.70A)
                     roboDrive_ActivateArms(servo_speed_mecha_arms);                            // speed >> ((superfast) 0 - 255 (very slow))
                           break;
-                case '+' :                  // ------------- lift-up arms (^_^) show-off ((lef/right) >> state 4 (current draw ~ 0.68-0.70A)
+                case '+' :                 // ------------- lift-up arms (^_^) show-off ((left/right) >> state 4 (current draw ~ 0.68-0.70A)
                     roboDrive_LiftUpArms(servo_speed_mecha_arms);                              // speed >> ((superfast) 0 - 255 (very slow))
                           break;
                 case 'd' :                                                    // ------------- gripper >> OPEN (left), (current draw ~ 0. A)
@@ -2389,8 +2396,7 @@ void pcLinkSerial(void){                         // computer link!, function to 
                     roboDrive_Crane_RightArm(35);                                              // speed >> ((superfast) 0 - 255 (very slow))
                        break;
                 case 'B' :
-                    //vibration_Scanning();
-                    roboDrive_ParkLeft_Arm_fromState4(servo_speed_mecha_arms);
+                    vibration_Scanning();
                         break;
                 case 'Z' :
                     temperatureScanner();
@@ -2755,7 +2761,7 @@ int main(void){
             {
                 lcd_home();
                 lcd_print_str(" Physalis Labs  ");
-                lcd_print_str("roboDrive v_5.X");
+                lcd_print_str("roboDrive v_5.9");
                 pcf8575_Output(0b0000000000000000);    // I2C port expander's Ports(0-7) as input, Ports(10-17) as output
                 playNote(notes[psi], currentNoteLength);
                 _delay_ms(50);
