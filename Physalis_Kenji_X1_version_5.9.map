@@ -728,7 +728,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x5df0
+.text           0x00000000     0x5e10
  *(.vectors)
  .vectors       0x00000000       0x8c d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51/crtatmega1284p.o
                 0x00000000                __vector_default
@@ -1061,294 +1061,294 @@ END GROUP
                 0x000029fc       0x34 main.o
                 0x000029fc                playNote
  .text.help_Readme
-                0x00002a30      0x270 main.o
+                0x00002a30      0x288 main.o
                 0x00002a30                help_Readme
  .text.monthsRun
-                0x00002ca0       0x2a main.o
-                0x00002ca0                monthsRun
- .text.daysRun  0x00002cca       0x1c main.o
-                0x00002cca                daysRun
+                0x00002cb8       0x2a main.o
+                0x00002cb8                monthsRun
+ .text.daysRun  0x00002ce2       0x1c main.o
+                0x00002ce2                daysRun
  .text.hoursRun
-                0x00002ce6       0xb2 main.o
-                0x00002ce6                hoursRun
+                0x00002cfe       0xb2 main.o
+                0x00002cfe                hoursRun
  .text.minutesRun
-                0x00002d98      0x25e main.o
-                0x00002d98                minutesRun
+                0x00002db0      0x25e main.o
+                0x00002db0                minutesRun
  .text.secondsRun
-                0x00002ff6       0x4c main.o
-                0x00002ff6                secondsRun
+                0x0000300e       0x4c main.o
+                0x0000300e                secondsRun
  .text.telemetryMotorRight
-                0x00003042       0x48 main.o
-                0x00003042                telemetryMotorRight
+                0x0000305a       0x48 main.o
+                0x0000305a                telemetryMotorRight
  .text.telemetryMotorLeft
-                0x0000308a       0x46 main.o
-                0x0000308a                telemetryMotorLeft
+                0x000030a2       0x46 main.o
+                0x000030a2                telemetryMotorLeft
  .text.set_Time
-                0x000030d0      0x1e4 main.o
-                0x000030d0                set_Time
+                0x000030e8      0x1e4 main.o
+                0x000030e8                set_Time
  .text.set_Kinetics
-                0x000032b4      0x26a main.o
-                0x000032b4                set_Kinetics
+                0x000032cc      0x26a main.o
+                0x000032cc                set_Kinetics
  .text.vibration_Scanning
-                0x0000351e      0x21a main.o
-                0x0000351e                vibration_Scanning
+                0x00003536      0x21a main.o
+                0x00003536                vibration_Scanning
  .text.read_FRAM
-                0x00003738      0x136 main.o
-                0x00003738                read_FRAM
+                0x00003750      0x136 main.o
+                0x00003750                read_FRAM
  .text.temperatureScanner
-                0x0000386e      0x460 main.o
-                0x0000386e                temperatureScanner
+                0x00003886      0x460 main.o
+                0x00003886                temperatureScanner
  .text.ping_Distance
-                0x00003cce       0xc4 main.o
-                0x00003cce                ping_Distance
+                0x00003ce6       0xc4 main.o
+                0x00003ce6                ping_Distance
  .text.update_Telemetry
-                0x00003d92      0x11c main.o
-                0x00003d92                update_Telemetry
+                0x00003daa      0x11c main.o
+                0x00003daa                update_Telemetry
  .text.pcLinkSerial
-                0x00003eae      0x228 main.o
-                0x00003eae                pcLinkSerial
+                0x00003ec6      0x228 main.o
+                0x00003ec6                pcLinkSerial
  .text.__vector_15
-                0x000040d6       0x2e main.o
-                0x000040d6                __vector_15
+                0x000040ee       0x2e main.o
+                0x000040ee                __vector_15
  .text.__vector_16
-                0x00004104       0x66 main.o
-                0x00004104                __vector_16
+                0x0000411c       0x66 main.o
+                0x0000411c                __vector_16
  .text.__vector_6
-                0x0000416a       0x54 main.o
-                0x0000416a                __vector_6
+                0x00004182       0x54 main.o
+                0x00004182                __vector_6
  .text.__vector_24
-                0x000041be        0x2 main.o
-                0x000041be                __vector_24
+                0x000041d6        0x2 main.o
+                0x000041d6                __vector_24
  .text.startup.main
-                0x000041c0      0x4e6 main.o
-                0x000041c0                main
+                0x000041d8      0x4ee main.o
+                0x000041d8                main
  .text.initPCA9685
-                0x000046a6       0xf2 PCA9685_PWM_Controller.o
-                0x000046a6                initPCA9685
+                0x000046c6       0xf2 PCA9685_PWM_Controller.o
+                0x000046c6                initPCA9685
  .text.runServo_onPCA9685
-                0x00004798      0x106 PCA9685_PWM_Controller.o
-                0x00004798                runServo_onPCA9685
+                0x000047b8      0x106 PCA9685_PWM_Controller.o
+                0x000047b8                runServo_onPCA9685
  .text.pcf8575_Output
-                0x0000489e       0x26 PCF8575_i2c_Expander.o
-                0x0000489e                pcf8575_Output
+                0x000048be       0x26 PCF8575_i2c_Expander.o
+                0x000048be                pcf8575_Output
  .text.measureDistance
-                0x000048c4       0x40 sharp_IRED_PSD_sensor.o
-                0x000048c4                measureDistance
+                0x000048e4       0x40 sharp_IRED_PSD_sensor.o
+                0x000048e4                measureDistance
  .text.stepperDrive_adapted
-                0x00004904       0x48 stepper_motor.o
-                0x00004904                stepperDrive_adapted
+                0x00004924       0x48 stepper_motor.o
+                0x00004924                stepperDrive_adapted
  .text.de_EnergizeStepper
-                0x0000494c        0xa stepper_motor.o
-                0x0000494c                de_EnergizeStepper
+                0x0000496c        0xa stepper_motor.o
+                0x0000496c                de_EnergizeStepper
  .text.transmitByte
-                0x00004956        0xe USART.o
-                0x00004956                transmitByte
+                0x00004976        0xe USART.o
+                0x00004976                transmitByte
  .text.receiveByte
-                0x00004964        0xe USART.o
-                0x00004964                receiveByte
+                0x00004984        0xe USART.o
+                0x00004984                receiveByte
  .text.printString
-                0x00004972       0x26 USART.o
-                0x00004972                printString
+                0x00004992       0x26 USART.o
+                0x00004992                printString
  .text.printByte
-                0x00004998       0x32 USART.o
-                0x00004998                printByte
+                0x000049b8       0x32 USART.o
+                0x000049b8                printByte
  .text.printWord
-                0x000049ca       0x76 USART.o
-                0x000049ca                printWord
+                0x000049ea       0x76 USART.o
+                0x000049ea                printWord
  .text.printWord_32
-                0x00004a40      0x16c USART.o
-                0x00004a40                printWord_32
+                0x00004a60      0x16c USART.o
+                0x00004a60                printWord_32
  .text.printBinaryByte
-                0x00004bac       0x3c USART.o
-                0x00004bac                printBinaryByte
+                0x00004bcc       0x3c USART.o
+                0x00004bcc                printBinaryByte
  .text.getNumber
-                0x00004be8       0x48 USART.o
-                0x00004be8                getNumber
+                0x00004c08       0x48 USART.o
+                0x00004c08                getNumber
  .text.get_16BitNumber
-                0x00004c30       0xb0 USART.o
-                0x00004c30                get_16BitNumber
+                0x00004c50       0xb0 USART.o
+                0x00004c50                get_16BitNumber
  .text.get_32BitNumber
-                0x00004ce0      0x1ac USART.o
-                0x00004ce0                get_32BitNumber
+                0x00004d00      0x1ac USART.o
+                0x00004d00                get_32BitNumber
  .text.measure_Vibrations
-                0x00004e8c      0x1c2 vibration_sensor.o
-                0x00004e8c                measure_Vibrations
+                0x00004eac      0x1c2 vibration_sensor.o
+                0x00004eac                measure_Vibrations
  .text.libgcc.div
-                0x0000504e       0x18 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodqi4.o)
-                0x0000504e                __udivmodqi4
+                0x0000506e       0x18 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodqi4.o)
+                0x0000506e                __udivmodqi4
  .text.libgcc.div
-                0x00005066       0x28 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodhi4.o)
-                0x00005066                __udivmodhi4
+                0x00005086       0x28 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodhi4.o)
+                0x00005086                __udivmodhi4
  .text.libgcc.div
-                0x0000508e       0x44 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodsi4.o)
-                0x0000508e                __udivmodsi4
- .text.libgcc   0x000050d2       0x12 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_tablejump2.o)
-                0x000050d2                __tablejump2__
+                0x000050ae       0x44 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodsi4.o)
+                0x000050ae                __udivmodsi4
+ .text.libgcc   0x000050f2       0x12 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_tablejump2.o)
+                0x000050f2                __tablejump2__
  .text.libgcc.mul
-                0x000050e4       0x10 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_mulshisi3.o)
-                0x000050e4                __mulshisi3
-                0x000050ea                __mulohisi3
+                0x00005104       0x10 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_mulshisi3.o)
+                0x00005104                __mulshisi3
+                0x0000510a                __mulohisi3
  .text.libgcc.mul
-                0x000050f4       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_muluhisi3.o)
-                0x000050f4                __muluhisi3
+                0x00005114       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_muluhisi3.o)
+                0x00005114                __muluhisi3
  .text.libgcc.mul
-                0x0000510a       0x1e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_umulhisi3.o)
-                0x0000510a                __umulhisi3
+                0x0000512a       0x1e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_umulhisi3.o)
+                0x0000512a                __umulhisi3
  .text.avr-libc.fplib
-                0x00005128        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(addsf3.o)
-                0x00005128                __subsf3
-                0x0000512a                __addsf3
+                0x00005148        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(addsf3.o)
+                0x00005148                __subsf3
+                0x0000514a                __addsf3
  .text.avr-libc.fplib
-                0x00005136       0xcc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(addsf3x.o)
-                0x00005158                __addsf3x
+                0x00005156       0xcc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(addsf3x.o)
+                0x00005178                __addsf3x
  .text.avr-libc.fplib
-                0x00005202        0xa d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(cmpsf2.o)
-                0x00005202                __nesf2
-                0x00005202                __eqsf2
-                0x00005202                __cmpsf2
-                0x00005202                __ltsf2
-                0x00005202                __lesf2
+                0x00005222        0xa d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(cmpsf2.o)
+                0x00005222                __nesf2
+                0x00005222                __eqsf2
+                0x00005222                __cmpsf2
+                0x00005222                __ltsf2
+                0x00005222                __lesf2
  .text.avr-libc.fplib
-                0x0000520c        0x8 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(divsf3.o)
-                0x0000520c                __divsf3
+                0x0000522c        0x8 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(divsf3.o)
+                0x0000522c                __divsf3
  .text.avr-libc.fplib
-                0x00005214       0xdc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(divsf3x.o)
-                0x00005234                __divsf3x
-                0x0000523a                __divsf3_pse
+                0x00005234       0xdc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(divsf3x.o)
+                0x00005254                __divsf3x
+                0x0000525a                __divsf3_pse
  .text.avr-libc.fplib
-                0x000052f0       0x5e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fixunssfsi.o)
-                0x000052f0                __fixunssfsi
+                0x00005310       0x5e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fixunssfsi.o)
+                0x00005310                __fixunssfsi
  .text.avr-libc.fplib
-                0x0000534e       0x7a d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(floatsisf.o)
-                0x0000534e                __floatunsisf
-                0x00005352                __floatsisf
+                0x0000536e       0x7a d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(floatsisf.o)
+                0x0000536e                __floatunsisf
+                0x00005372                __floatsisf
  .text.avr-libc.fplib
-                0x000053c8       0x2e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(floor.o)
-                0x000053c8                floor
+                0x000053e8       0x2e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(floor.o)
+                0x000053e8                floor
  .text.avr-libc.fplib
-                0x000053f6       0x48 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_cmp.o)
-                0x000053f6                __fp_cmp
+                0x00005416       0x48 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_cmp.o)
+                0x00005416                __fp_cmp
  .text.avr-libc.fplib
-                0x0000543e        0xc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_inf.o)
-                0x0000543e                __fp_inf
+                0x0000545e        0xc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_inf.o)
+                0x0000545e                __fp_inf
  .text.avr-libc.fplib
-                0x0000544a       0x36 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_mintl.o)
-                0x0000544a                __fp_mintl
+                0x0000546a       0x36 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_mintl.o)
+                0x0000546a                __fp_mintl
  .text.avr-libc.fplib
-                0x00005480       0x1c d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_mpack.o)
-                0x00005480                __fp_mpack
-                0x00005484                __fp_mpack_finite
+                0x000054a0       0x1c d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_mpack.o)
+                0x000054a0                __fp_mpack
+                0x000054a4                __fp_mpack_finite
  .text.avr-libc.fplib
-                0x0000549c        0x6 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_nan.o)
-                0x0000549c                __fp_nan
+                0x000054bc        0x6 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_nan.o)
+                0x000054bc                __fp_nan
  .text.avr-libc.fplib
-                0x000054a2        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_pscA.o)
-                0x000054a2                __fp_pscA
+                0x000054c2        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_pscA.o)
+                0x000054c2                __fp_pscA
  .text.avr-libc.fplib
-                0x000054b0        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_pscB.o)
-                0x000054b0                __fp_pscB
+                0x000054d0        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_pscB.o)
+                0x000054d0                __fp_pscB
  .text.avr-libc.fplib
-                0x000054be       0x22 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_round.o)
-                0x000054be                __fp_round
+                0x000054de       0x22 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_round.o)
+                0x000054de                __fp_round
  .text.avr-libc.fplib
-                0x000054e0       0x44 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_split3.o)
-                0x000054e0                __fp_split3
-                0x000054f0                __fp_splitA
+                0x00005500       0x44 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_split3.o)
+                0x00005500                __fp_split3
+                0x00005510                __fp_splitA
  .text.avr-libc.fplib
-                0x00005524       0x30 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_trunc.o)
-                0x00005524                __fp_trunc
+                0x00005544       0x30 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_trunc.o)
+                0x00005544                __fp_trunc
  .text.avr-libc.fplib
-                0x00005554        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_zero.o)
-                0x00005554                __fp_zero
-                0x00005556                __fp_szero
+                0x00005574        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_zero.o)
+                0x00005574                __fp_zero
+                0x00005576                __fp_szero
  .text.avr-libc.fplib
-                0x00005562        0xa d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(gesf2.o)
-                0x00005562                __gesf2
-                0x00005562                __gtsf2
+                0x00005582        0xa d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(gesf2.o)
+                0x00005582                __gesf2
+                0x00005582                __gtsf2
  .text.avr-libc.fplib
-                0x0000556c        0x8 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(mulsf3.o)
-                0x0000556c                __mulsf3
+                0x0000558c        0x8 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(mulsf3.o)
+                0x0000558c                __mulsf3
  .text.avr-libc.fplib
-                0x00005574       0xd2 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(mulsf3x.o)
-                0x00005592                __mulsf3x
-                0x00005598                __mulsf3_pse
+                0x00005594       0xd2 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(mulsf3x.o)
+                0x000055b2                __mulsf3x
+                0x000055b8                __mulsf3_pse
  .text.avr-libc.fplib
-                0x00005646       0xa0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(pow.o)
-                0x00005646                pow
+                0x00005666       0xa0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(pow.o)
+                0x00005666                pow
  .text.avr-libc.fplib
-                0x000056e6       0x48 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(round.o)
-                0x000056e6                round
+                0x00005706       0x48 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(round.o)
+                0x00005706                round
  .text.avr-libc.fplib
-                0x0000572e       0x74 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(exp.o)
-                0x0000573e                exp
+                0x0000574e       0x74 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(exp.o)
+                0x0000575e                exp
  .text.avr-libc.fplib
-                0x000057a2       0x4e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_powser.o)
-                0x000057a2                __fp_powser
+                0x000057c2       0x4e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(fp_powser.o)
+                0x000057c2                __fp_powser
  .text.avr-libc.fplib
-                0x000057f0       0x10 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(inverse.o)
-                0x000057f0                inverse
+                0x00005810       0x10 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(inverse.o)
+                0x00005810                inverse
  .text.avr-libc.fplib
-                0x00005800       0x74 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(ldexp.o)
-                0x00005808                ldexp
+                0x00005820       0x74 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(ldexp.o)
+                0x00005828                ldexp
  .text.avr-libc.fplib
-                0x00005874       0xa0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(log.o)
-                0x00005884                log
+                0x00005894       0xa0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(log.o)
+                0x000058a4                log
  .text.avr-libc.fplib
-                0x00005914       0x68 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(modf.o)
-                0x00005914                modf
-                0x00005914                modff
+                0x00005934       0x68 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a(modf.o)
+                0x00005934                modf
+                0x00005934                modff
  .text.avr-libc
-                0x0000597c       0x3c d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(atoi.o)
-                0x0000597c                atoi
+                0x0000599c       0x3c d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(atoi.o)
+                0x0000599c                atoi
  .text.avr-libc
-                0x000059b8      0x1b0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(ftoa_engine.o)
-                0x000059b8                __ftoa_engine
+                0x000059d8      0x1b0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(ftoa_engine.o)
+                0x000059d8                __ftoa_engine
  .text.avr-libc
-                0x00005b68       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
-                0x00005b68                strnlen_P
+                0x00005b88       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+                0x00005b88                strnlen_P
  .text.avr-libc
-                0x00005b7e       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strcat.o)
-                0x00005b7e                strcat
+                0x00005b9e       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strcat.o)
+                0x00005b9e                strcat
  .text.avr-libc
-                0x00005b94       0x12 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strcmp.o)
-                0x00005b94                strcmp
+                0x00005bb4       0x12 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strcmp.o)
+                0x00005bb4                strcmp
  .text.avr-libc
-                0x00005ba6        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strcpy.o)
-                0x00005ba6                strcpy
+                0x00005bc6        0xe d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strcpy.o)
+                0x00005bc6                strcpy
  .text.avr-libc
-                0x00005bb4       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strnlen.o)
-                0x00005bb4                strnlen
+                0x00005bd4       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strnlen.o)
+                0x00005bd4                strnlen
  .text.avr-libc
-                0x00005bca       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(itoa.o)
-                0x00005bca                __itoa
-                0x00005bca                itoa
+                0x00005bea       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(itoa.o)
+                0x00005bea                __itoa
+                0x00005bea                itoa
  .text.avr-libc
-                0x00005be0       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(itoa_ncheck.o)
-                0x00005be0                __itoa_ncheck
+                0x00005c00       0x16 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(itoa_ncheck.o)
+                0x00005c00                __itoa_ncheck
  .text.avr-libc
-                0x00005bf6       0x10 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(mul10.o)
-                0x00005bf6                __mulhi_const_10
+                0x00005c16       0x10 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(mul10.o)
+                0x00005c16                __mulhi_const_10
  .text.avr-libc
-                0x00005c06       0x34 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(utoa_ncheck.o)
-                0x00005c06                __utoa_ncheck
-                0x00005c08                __utoa_common
+                0x00005c26       0x34 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(utoa_ncheck.o)
+                0x00005c26                __utoa_ncheck
+                0x00005c28                __utoa_common
  .text.avr-libc
-                0x00005c3a       0x78 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(fputc.o)
-                0x00005c3a                fputc
+                0x00005c5a       0x78 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(fputc.o)
+                0x00005c5a                fputc
  .text.avr-libc
-                0x00005cb2       0x5e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(sprintf.o)
-                0x00005cb2                sprintf
+                0x00005cd2       0x5e d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(sprintf.o)
+                0x00005cd2                sprintf
  .text.avr-libc
-                0x00005d10       0xbc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
-                0x00005d10                __ultoa_invert
+                0x00005d30       0xbc d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+                0x00005d30                __ultoa_invert
  .text.avr-libc
-                0x00005dcc       0x20 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strrev.o)
-                0x00005dcc                strrev
-                0x00005dec                . = ALIGN (0x2)
+                0x00005dec       0x20 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(strrev.o)
+                0x00005dec                strrev
+                0x00005e0c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00005dec        0x0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x00005dec                _exit
-                0x00005dec                exit
+ .fini9         0x00005e0c        0x0 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x00005e0c                _exit
+                0x00005e0c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1367,11 +1367,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00005dec        0x4 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x00005e0c        0x4 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x00005df0                _etext = .
+                0x00005e10                _etext = .
 
-.data           0x00800100     0x1ede load address 0x00005df0
+.data           0x00800100     0x1d12 load address 0x00005e10
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1434,98 +1434,99 @@ END GROUP
                 0x00800118      0x165 Garmin_LIDAR_Lite_v3HP.o
                                 0x168 (size before relaxing)
  .rodata.str1.1
-                0x0080027d     0x1cfe main.o
-                               0x1d19 (size before relaxing)
- .rodata.notes  0x00801f7b       0x24 main.o
-                0x00801f7b                notes
+                0x0080027d     0x1b31 main.o
+                               0x1b4c (size before relaxing)
+ .rodata.notes  0x00801dae       0x24 main.o
+                0x00801dae                notes
  .rodata.motor_Phases
-                0x00801f9f        0x8 stepper_motor.o
-                0x00801f9f                motor_Phases
+                0x00801dd2        0x8 stepper_motor.o
+                0x00801dd2                motor_Phases
  .rodata.str1.1
-                0x00801fa7       0x37 vibration_sensor.o
+                0x00801dda       0x37 vibration_sensor.o
                                  0x39 (size before relaxing)
  *(.gnu.linkonce.r*)
-                0x00801fde                . = ALIGN (0x2)
-                0x00801fde                _edata = .
-                0x00801fde                PROVIDE (__data_end, .)
+                0x00801e12                . = ALIGN (0x2)
+ *fill*         0x00801e11        0x1 
+                0x00801e12                _edata = .
+                0x00801e12                PROVIDE (__data_end, .)
 
-.bss            0x00801fde       0x8e
-                0x00801fde                PROVIDE (__bss_start, .)
+.bss            0x00801e12       0x8e
+                0x00801e12                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.char_counter
-                0x00801fde        0x1 lcd_display.o
-                0x00801fde                char_counter
+                0x00801e12        0x1 lcd_display.o
+                0x00801e12                char_counter
  .bss.LIDAR_distance
-                0x00801fdf        0x2 main.o
-                0x00801fdf                LIDAR_distance
+                0x00801e13        0x2 main.o
+                0x00801e13                LIDAR_distance
  .bss.LIDAR_status
-                0x00801fe1        0x1 main.o
-                0x00801fe1                LIDAR_status
+                0x00801e15        0x1 main.o
+                0x00801e15                LIDAR_status
  .bss.test_cycle_num
-                0x00801fe2        0x2 main.o
-                0x00801fe2                test_cycle_num
- .bss.sys_tick  0x00801fe4        0x2 main.o
-                0x00801fe4                sys_tick
+                0x00801e16        0x2 main.o
+                0x00801e16                test_cycle_num
+ .bss.sys_tick  0x00801e18        0x2 main.o
+                0x00801e18                sys_tick
  .bss.distance_cm
-                0x00801fe6        0x4 sharp_IRED_PSD_sensor.o
-                0x00801fe6                distance_cm
+                0x00801e1a        0x4 sharp_IRED_PSD_sensor.o
+                0x00801e1a                distance_cm
  .bss.stepCounter
-                0x00801fea        0x2 stepper_motor.o
-                0x00801fea                stepCounter
+                0x00801e1e        0x2 stepper_motor.o
+                0x00801e1e                stepCounter
  .bss.stepPhase
-                0x00801fec        0x1 stepper_motor.o
-                0x00801fec                stepPhase
+                0x00801e20        0x1 stepper_motor.o
+                0x00801e20                stepPhase
  .bss.noiseVolume
-                0x00801fed        0x2 vibration_sensor.o
-                0x00801fed                noiseVolume
+                0x00801e21        0x2 vibration_sensor.o
+                0x00801e21                noiseVolume
  .bss.lightsOutTimer
-                0x00801fef        0x2 vibration_sensor.o
-                0x00801fef                lightsOutTimer
+                0x00801e23        0x2 vibration_sensor.o
+                0x00801e23                lightsOutTimer
  *(COMMON)
- COMMON         0x00801ff1        0x4 battery_pack.o
-                0x00801ff1                power_pack_voltage
- COMMON         0x00801ff5       0x6a main.o
-                0x00801ff5                ambient_light
-                0x00801ff7                address
-                0x00801ff8                move_dir_L
-                0x00801ff9                distance
-                0x00801ffd                currentMemoryLocation
-                0x00802001                tempLowByte
-                0x00802002                move_knob_L
-                0x00802003                move_dir_R
-                0x00802004                scanner_minVal
-                0x00802006                user_input
-                0x00802007                i
-                0x0080200b                hall_S2L_pulse
-                0x0080200d                i_
-                0x0080200f                distance_buffer
-                0x00802023                temperatureByte
-                0x00802024                move_knob_R
-                0x00802025                tempHighByte
-                0x00802026                enterMenu
-                0x00802027                hall_S2R_pulse
-                0x00802029                secondsDelay
-                0x0080202b                voltage_buffer
-                0x0080203f                temp_buffer
-                0x00802053                ired_range
-                0x00802055                LIDAR_range_buffer
- COMMON         0x0080205f        0x3 PCA9685_PWM_Controller.o
-                0x0080205f                global_address
-                0x00802060                global_freq_pwm
- COMMON         0x00802062        0xa vibration_sensor.o
-                0x00802062                theta_1
-                0x00802066                theta_0
-                0x0080206a                adcValue
-                0x0080206c                PROVIDE (__bss_end, .)
-                0x00005df0                __data_load_start = LOADADDR (.data)
-                0x00007cce                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00801e25        0x4 battery_pack.o
+                0x00801e25                power_pack_voltage
+ COMMON         0x00801e29       0x6a main.o
+                0x00801e29                ambient_light
+                0x00801e2b                address
+                0x00801e2c                move_dir_L
+                0x00801e2d                distance
+                0x00801e31                currentMemoryLocation
+                0x00801e35                tempLowByte
+                0x00801e36                move_knob_L
+                0x00801e37                move_dir_R
+                0x00801e38                scanner_minVal
+                0x00801e3a                user_input
+                0x00801e3b                i
+                0x00801e3f                hall_S2L_pulse
+                0x00801e41                i_
+                0x00801e43                distance_buffer
+                0x00801e57                temperatureByte
+                0x00801e58                move_knob_R
+                0x00801e59                tempHighByte
+                0x00801e5a                enterMenu
+                0x00801e5b                hall_S2R_pulse
+                0x00801e5d                secondsDelay
+                0x00801e5f                voltage_buffer
+                0x00801e73                temp_buffer
+                0x00801e87                ired_range
+                0x00801e89                LIDAR_range_buffer
+ COMMON         0x00801e93        0x3 PCA9685_PWM_Controller.o
+                0x00801e93                global_address
+                0x00801e94                global_freq_pwm
+ COMMON         0x00801e96        0xa vibration_sensor.o
+                0x00801e96                theta_1
+                0x00801e9a                theta_0
+                0x00801e9e                adcValue
+                0x00801ea0                PROVIDE (__bss_end, .)
+                0x00005e10                __data_load_start = LOADADDR (.data)
+                0x00007b22                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080206c        0x0
+.noinit         0x00801ea0        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080206c                _end = .
+                0x00801ea0                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -1640,7 +1641,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xb66c
+.debug_info     0x00000000     0xb6dc
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x792 d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51/crtatmega1284p.o
  .debug_info    0x00000792      0x11f battery_pack.o
@@ -1649,13 +1650,13 @@ END GROUP
  .debug_info    0x00000f57      0x666 Garmin_LIDAR_Lite_v3HP.o
  .debug_info    0x000015bd      0x15f i2c.o
  .debug_info    0x0000171c      0x875 lcd_display.o
- .debug_info    0x00001f91     0x8535 main.o
- .debug_info    0x0000a4c6      0x402 PCA9685_PWM_Controller.o
- .debug_info    0x0000a8c8      0x2bd PCF8575_i2c_Expander.o
- .debug_info    0x0000ab85       0xe2 sharp_IRED_PSD_sensor.o
- .debug_info    0x0000ac67      0x20a stepper_motor.o
- .debug_info    0x0000ae71      0x5c1 USART.o
- .debug_info    0x0000b432      0x23a vibration_sensor.o
+ .debug_info    0x00001f91     0x85a5 main.o
+ .debug_info    0x0000a536      0x402 PCA9685_PWM_Controller.o
+ .debug_info    0x0000a938      0x2bd PCF8575_i2c_Expander.o
+ .debug_info    0x0000abf5       0xe2 sharp_IRED_PSD_sensor.o
+ .debug_info    0x0000acd7      0x20a stepper_motor.o
+ .debug_info    0x0000aee1      0x5c1 USART.o
+ .debug_info    0x0000b4a2      0x23a vibration_sensor.o
 
 .debug_abbrev   0x00000000     0x17f2
  *(.debug_abbrev)
@@ -1674,7 +1675,7 @@ END GROUP
  .debug_abbrev  0x000015da      0x170 USART.o
  .debug_abbrev  0x0000174a       0xa8 vibration_sensor.o
 
-.debug_line     0x00000000     0x48bc
+.debug_line     0x00000000     0x48d4
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1a d:/users/arhitect/documents/avr8-gnu-toolchain-3.6.2.1759-win32.any.x86/avr8-gnu-toolchain-win32_x86/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51/crtatmega1284p.o
  .debug_line    0x0000001a      0x13d battery_pack.o
@@ -1683,13 +1684,13 @@ END GROUP
  .debug_line    0x0000061b      0x2ef Garmin_LIDAR_Lite_v3HP.o
  .debug_line    0x0000090a      0x184 i2c.o
  .debug_line    0x00000a8e      0x5c0 lcd_display.o
- .debug_line    0x0000104e     0x2ca3 main.o
- .debug_line    0x00003cf1      0x25c PCA9685_PWM_Controller.o
- .debug_line    0x00003f4d      0x183 PCF8575_i2c_Expander.o
- .debug_line    0x000040d0       0xd8 sharp_IRED_PSD_sensor.o
- .debug_line    0x000041a8      0x1e3 stepper_motor.o
- .debug_line    0x0000438b      0x3c3 USART.o
- .debug_line    0x0000474e      0x16e vibration_sensor.o
+ .debug_line    0x0000104e     0x2cbb main.o
+ .debug_line    0x00003d09      0x25c PCA9685_PWM_Controller.o
+ .debug_line    0x00003f65      0x183 PCF8575_i2c_Expander.o
+ .debug_line    0x000040e8       0xd8 sharp_IRED_PSD_sensor.o
+ .debug_line    0x000041c0      0x1e3 stepper_motor.o
+ .debug_line    0x000043a3      0x3c3 USART.o
+ .debug_line    0x00004766      0x16e vibration_sensor.o
 
 .debug_frame    0x00000000     0x1064
  *(.debug_frame)
