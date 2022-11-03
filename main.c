@@ -102,23 +102,23 @@ extern uint8_t motor_Phases[];
 extern uint8_t stepPhase;
 extern uint16_t stepCounter;
 
-int8_t  stepper_speed = 5;                         // holds step motor speed, possible to change on the fly via getnumber()
-uint8_t drive_speed = 20;                                                   //roboDrive() variables to pass value from UART
+int8_t  stepper_speed = 30;                        // holds step motor speed, possible to change on the fly via getnumber()
+uint8_t drive_speed = 150;                                                  //roboDrive() variables to pass value from UART
 uint8_t servo_speed_mecha_arms = 20;                    // holds mecha-arms servos speed, change on the fly via getnumber()
 uint8_t servo_speed_turning_mecha_arms = 20;           // holds mecha-arms turning(L/R) servo speed, change via getnumber()
 uint8_t servo_speed_towerdrive = 20;                 // holds tower servo vertical speed, change on the fly via getnumber()
 uint8_t servo_speed_grippers = 20;                   // both grippers speed (left/right), change on the fly via getnumber()
 uint8_t servo_speed_rotation_grippers = 20;           // both grippers rotation servo speed before updating via getnumber()
 
-volatile bool move_knob_R, move_knob_L;                            // variables tracking movement direction and speed right
-volatile bool move_dir_R, move_dir_L;                               // variables tracking movement direction and speed left
+volatile bool move_knob_R, move_knob_L;                           // variables tracking movement direction and speed right
+volatile bool move_dir_R, move_dir_L;                              // variables tracking movement direction and speed left
 
-volatile short hall_S2R_pulse;                                          // variables for counting Hall sensor pulses /right
-volatile short hall_S2L_pulse;                                           // variables for counting Hall sensor pulses /left
+volatile short hall_S2R_pulse;                                         // variables for counting Hall sensor pulses /right
+volatile short hall_S2L_pulse;                                          // variables for counting Hall sensor pulses /left
 
 volatile uint16_t year_ = 2022;                                                           // variable keeps track of years
-volatile uint8_t months_ = 11;                                                            // variable keeps track of months
-volatile uint8_t days_ = 5;                                                               // variable keeps track of days
+volatile uint8_t months_ = 11;                                                           // variable keeps track of months
+volatile uint8_t days_ = 5;                                                                // variable keeps track of days
 volatile uint8_t hours_ = 12;                                                             // variable keeps track of hours
 volatile uint8_t minutes_ = 30;                                                         // variable keeps track of minutes
 volatile uint8_t seconds_ = 25;                                                         // variable keeps track of seconds
@@ -736,7 +736,7 @@ void roboDrive_DeployRight_Arm_State1(uint8_t deploy_speed){
   move_Servo_Bidirect(5,  0,   deploy_speed, 1);
   move_Servo_Bidirect(6, 30,   deploy_speed, 1);
 }
-//----------------working here>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 void roboDrive_DeployLeft_Arm_State4(uint8_t deploy_speed){
                                            // ---------- Deploy Left-MechaArm (left) >> Deployed State-4 (current draw ~ 0.6A)
 // --------------------------------------------------- // Left-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
@@ -768,6 +768,60 @@ void roboDrive_ParkLeft_Arm_fromState4(uint8_t parking_speed){
   move_Servo_Bidirect(11, 125, parking_speed, 1);
   move_Servo_Bidirect(10, 54,  parking_speed, 1);
 }
+
+
+
+
+
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> working here..................................................................................
+void roboDrive_DeployRight_Arm_State4(uint8_t deploy_speed){
+                                          // ---------- Deploy Right-MechaArm (Right) >> Deployed State-4 (current draw ~ 0.6A)
+// --------------------------------------------------- // Right-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+  move_Servo_Bidirect(1, -70,    deploy_speed, 1);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  de_EnergizeStepper();
+  move_Servo_Bidirect(3, 0,    deploy_speed, 1);
+  move_Servo_Bidirect(2, 0,     deploy_speed, 1);
+  // move_Servo_Bidirect(11, -90,  deploy_speed, 1);
+  // move_Servo_Bidirect(10, 90,   deploy_speed, 1);
+  // move_Servo_Bidirect(8, 118,   deploy_speed, 1);
+  // move_Servo_Bidirect(9, 110,   deploy_speed, 1);
+  // move_Servo_Bidirect(11, -110, deploy_speed, 1);
+}
+
+void roboDrive_ParkRight_Arm_fromState4(uint8_t parking_speed){
+                                              // ---------- Park Right-MechaArm (Right) >> Parked-State 4 (current draw ~ 0.6A)
+// ------------------------------------- ------------- // Right-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+  move_Servo_Bidirect(13, 10,  parking_speed, 1);
+  move_Servo_Bidirect(12, 0,   parking_speed, 1);
+  move_Servo_Bidirect(7,  0,   parking_speed, 1);
+  move_Servo_Bidirect(10, 0,   parking_speed, 1);
+  move_Servo_Bidirect(11, 0,   parking_speed, 1);
+  move_Servo_Bidirect(8,  90,  parking_speed, 1);
+  move_Servo_Bidirect(9, -20,  parking_speed, 1);
+  move_Servo_Bidirect(11, 90,  parking_speed, 1);
+  move_Servo_Bidirect(10, 70,  parking_speed, 1);
+  move_Servo_Bidirect(9, -57,  parking_speed, 1);
+  move_Servo_Bidirect(10, 45,  parking_speed, 1);
+  move_Servo_Bidirect(8,  110, parking_speed, 1);
+  move_Servo_Bidirect(11, 125, parking_speed, 1);
+  move_Servo_Bidirect(10, 54,  parking_speed, 1);
+}
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> working here..................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
 
 void roboDrive_DeployArmsState2(uint8_t deploy_speed){
                                                  // -deploy arms (state_2) (lef/right) >> state 2 (current draw ~ 0.50-0.65A)
@@ -2399,7 +2453,8 @@ void pcLinkSerial(void){                         // computer link!, function to 
                     roboDrive_Crane_RightArm(35);                                              // speed >> ((superfast) 0 - 255 (very slow))
                        break;
                 case 'B' :
-                    vibration_Scanning();
+                    //vibration_Scanning();
+                    roboDrive_DeployRight_Arm_State4(servo_speed_mecha_arms);
                         break;
                 case 'Z' :
                     temperatureScanner();
