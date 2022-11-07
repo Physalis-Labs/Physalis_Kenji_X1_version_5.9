@@ -740,6 +740,9 @@ void roboDrive_DeployRight_Arm_State1(uint8_t deploy_speed){
 void roboDrive_DeployLeft_Arm_State4(uint8_t deploy_speed){
                                            // ---------- Deploy Left-MechaArm (left) >> Deployed State-4 (current draw ~ 0.6A)
 // --------------------------------------------------- // Left-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   move_Servo_Bidirect(8, 60,    deploy_speed, 1);
   move_Servo_Bidirect(10, 0,    deploy_speed, 1);
   move_Servo_Bidirect(9, 0,     deploy_speed, 1);
@@ -747,12 +750,18 @@ void roboDrive_DeployLeft_Arm_State4(uint8_t deploy_speed){
   move_Servo_Bidirect(10, 90,   deploy_speed, 1);
   move_Servo_Bidirect(8, 118,   deploy_speed, 1);
   move_Servo_Bidirect(9, 110,   deploy_speed, 1);
-  move_Servo_Bidirect(11, -110, deploy_speed, 1);
+  move_Servo_Bidirect(11, -75, deploy_speed, 1);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
 }
 
 void roboDrive_ParkLeft_Arm_fromState4(uint8_t parking_speed){
                                                 // ---------- Park Left-MechaArm (left) >> Parked-State 4 (current draw ~ 0.6A)
 // ---------------------------------------------------- // Left-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   move_Servo_Bidirect(13, 10,  parking_speed, 1);
   move_Servo_Bidirect(12, 0,   parking_speed, 1);
   move_Servo_Bidirect(7,  0,   parking_speed, 1);
@@ -767,61 +776,69 @@ void roboDrive_ParkLeft_Arm_fromState4(uint8_t parking_speed){
   move_Servo_Bidirect(8,  110, parking_speed, 1);
   move_Servo_Bidirect(11, 125, parking_speed, 1);
   move_Servo_Bidirect(10, 54,  parking_speed, 1);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
 }
-
-
-
-
-
-
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> working here..................................................................................
 void roboDrive_DeployRight_Arm_State4(uint8_t deploy_speed){
                                           // ---------- Deploy Right-MechaArm (Right) >> Deployed State-4 (current draw ~ 0.6A)
 // --------------------------------------------------- // Right-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
-  move_Servo_Bidirect(1, -70,    deploy_speed, 1);
+
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   de_EnergizeStepper();
+
+  move_Servo_Bidirect(1, -70,    deploy_speed, 1);
   move_Servo_Bidirect(3, 0,    deploy_speed, 1);
   move_Servo_Bidirect(2, 0,     deploy_speed, 1);
-  // move_Servo_Bidirect(11, -90,  deploy_speed, 1);
-  // move_Servo_Bidirect(10, 90,   deploy_speed, 1);
-  // move_Servo_Bidirect(8, 118,   deploy_speed, 1);
-  // move_Servo_Bidirect(9, 110,   deploy_speed, 1);
-  // move_Servo_Bidirect(11, -110, deploy_speed, 1);
+  move_Servo_Bidirect(4, -90,  deploy_speed, 1);
+  move_Servo_Bidirect(3, -10,   deploy_speed, 1);
+  move_Servo_Bidirect(1, -120,   deploy_speed, 1);
+  move_Servo_Bidirect(2, 100,   deploy_speed, 1);
+  move_Servo_Bidirect(3, 90, deploy_speed, 1);
+  move_Servo_Bidirect(6, -70, deploy_speed, 1);
+  move_Servo_Bidirect(5,  0,    deploy_speed, 1);
+
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  de_EnergizeStepper();
 }
 
 void roboDrive_ParkRight_Arm_fromState4(uint8_t parking_speed){
                                               // ---------- Park Right-MechaArm (Right) >> Parked-State 4 (current draw ~ 0.6A)
 // ------------------------------------- ------------- // Right-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
-  move_Servo_Bidirect(13, 10,  parking_speed, 1);
-  move_Servo_Bidirect(12, 0,   parking_speed, 1);
-  move_Servo_Bidirect(7,  0,   parking_speed, 1);
-  move_Servo_Bidirect(10, 0,   parking_speed, 1);
-  move_Servo_Bidirect(11, 0,   parking_speed, 1);
-  move_Servo_Bidirect(8,  90,  parking_speed, 1);
-  move_Servo_Bidirect(9, -20,  parking_speed, 1);
-  move_Servo_Bidirect(11, 90,  parking_speed, 1);
-  move_Servo_Bidirect(10, 70,  parking_speed, 1);
-  move_Servo_Bidirect(9, -57,  parking_speed, 1);
-  move_Servo_Bidirect(10, 45,  parking_speed, 1);
-  move_Servo_Bidirect(8,  110, parking_speed, 1);
-  move_Servo_Bidirect(11, 125, parking_speed, 1);
-  move_Servo_Bidirect(10, 54,  parking_speed, 1);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  de_EnergizeStepper();
+
+  move_Servo_Bidirect(6, 50,  parking_speed, 1);
+  move_Servo_Bidirect(5, 0,   parking_speed, 1);
+
+  move_Servo_Bidirect(0, -10, parking_speed, 1);
+  move_Servo_Bidirect(3,  0,  parking_speed, 1);
+  move_Servo_Bidirect(4,  0,  parking_speed, 1);
+  move_Servo_Bidirect(1, -90, parking_speed, 1);
+  move_Servo_Bidirect(2, -20, parking_speed, 1);
+
+  move_Servo_Bidirect(4, 90, parking_speed, 1);
+  move_Servo_Bidirect(3, 70, parking_speed, 1);
+  move_Servo_Bidirect(2, -62, parking_speed, 1);
+  move_Servo_Bidirect(3, 45,  parking_speed, 1);
+  move_Servo_Bidirect(1, -122, parking_speed, 1);
+  move_Servo_Bidirect(4, 116, parking_speed, 1);
+  move_Servo_Bidirect(3, 45,  parking_speed, 1);
+
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  de_EnergizeStepper();
 }
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> working here..................................................................................
-
-
-
-
-
-
-
-
-
-
-
-
 
 void roboDrive_DeployArmsState2(uint8_t deploy_speed){
                                                  // -deploy arms (state_2) (lef/right) >> state 2 (current draw ~ 0.50-0.65A)
@@ -2346,11 +2363,12 @@ void pcLinkSerial(void){                         // computer link!, function to 
                     printString("\r\nFront Light >> ON\n");
                         break;
                 case '*' :
-                   pcf8575_Output(0b0000000000000000);
-                   printString("\r\nFront Light >> OFF\n");
+                    pcf8575_Output(0b0000000000000000);
+                    printString("\r\nFront Light >> OFF\n");
                         break;
                 case 't' :
-                    roboDrive_Arm_Testing();              // service-mode, inverse Kinematics!, custom servo commands over roboDrive console
+                     roboDrive_ParkRight_Arm_fromState4(servo_speed_mecha_arms);
+                    //roboDrive_Arm_Testing();              // service-mode, inverse Kinematics!, custom servo commands over roboDrive console
                         break;
                 case '#' :                     // apply only when both arms are streched, use this to recover from unknown states to parking
                     roboDrive_RecoverArmsForParking(servo_speed_mecha_arms);                   // speed >> ((superfast) 0 - 255 (very slow))
