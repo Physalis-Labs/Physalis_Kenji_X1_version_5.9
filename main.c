@@ -103,7 +103,7 @@ extern uint8_t stepPhase;
 extern uint16_t stepCounter;
 
 int8_t  stepper_speed = 30;                        // holds step motor speed, possible to change on the fly via getnumber()
-uint8_t drive_speed = 150;                                                  //roboDrive() variables to pass value from UART
+uint8_t drive_speed = 120;                                                  //roboDrive() variables to pass value from UART
 uint8_t servo_speed_mecha_arms = 20;                    // holds mecha-arms servos speed, change on the fly via getnumber()
 uint8_t servo_speed_turning_mecha_arms = 20;           // holds mecha-arms turning(L/R) servo speed, change via getnumber()
 uint8_t servo_speed_towerdrive = 20;                 // holds tower servo vertical speed, change on the fly via getnumber()
@@ -596,10 +596,15 @@ void roboDrive_Arm_Testing(void){
             printString("\r\nmove_Servo_Bidirect executed.");
 }
 
-// ----------------------------------- updated Mecha-Arms Control functions D.Z. --------------------------------------------//
-void roboDrive_RecoverArmsForParking(uint8_t recover_speed){
+//----------------------------------- Updated Mecha-Arms Control Functions D.Z. ---------------------------------------------//
+//----------------------------------- Mecha-Arm Control and inverse-Kinematics  ---------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------//
+void roboDrive_Recover_MechaArmsForParking(uint8_t recover_speed){
                                        // apply only when both arms are streched, use to recover from unknown states to parking
-// ------------------------------------------------- // right mecha arm op-codes, // speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------- Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//-------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   move_Servo_Bidirect(0,   0,  recover_speed, 1);
   move_Servo_Bidirect(4,   0,  recover_speed, 1);
   move_Servo_Bidirect(3,   0,  recover_speed, 1);
@@ -607,7 +612,7 @@ void roboDrive_RecoverArmsForParking(uint8_t recover_speed){
   move_Servo_Bidirect(1,   0,  recover_speed, 1);
   move_Servo_Bidirect(5,   0,  recover_speed, 1);
   move_Servo_Bidirect(6,  30,  recover_speed, 1);
-// ------------------------------------------------------------------------------------------------ // left mecha-arm op-codes
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   move_Servo_Bidirect(7,   0,  recover_speed, 1);
   move_Servo_Bidirect(11,  0,  recover_speed, 1);
   move_Servo_Bidirect(10,  0,  recover_speed, 1);
@@ -617,11 +622,11 @@ void roboDrive_RecoverArmsForParking(uint8_t recover_speed){
   move_Servo_Bidirect(13, -20, recover_speed, 1);
 }
 
-void roboDrive_RecoverLeftArmForParking(uint8_t recover_speed){
+void roboDrive_Recover_LeftMechaArmForParking(uint8_t recover_speed){
                                               // apply only when arm is streched, use to recover from unknown states to parking
-// -------------------------------------------------- // Left mecha arm op-codes, // speed >> ((superfast) 1 - 255 (very slow))
-// ------------------------------------------------------------------------------------------------------------------------- //
-// ------------------------------------------------------------------------------------------------- // left mecha-arm op-codes
+//------------------------------------------------------------- Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//-------------------------------------------------------------------------------------------------------------------------- //
+//--------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   move_Servo_Bidirect(7,   0,  recover_speed, 1);
   move_Servo_Bidirect(11,  0,  recover_speed, 1);
   move_Servo_Bidirect(10,  0,  recover_speed, 1);
@@ -631,10 +636,11 @@ void roboDrive_RecoverLeftArmForParking(uint8_t recover_speed){
   move_Servo_Bidirect(13, -20, recover_speed, 1);
 }
 
-void roboDrive_RecoverRightArmForParking(uint8_t recover_speed){
+void roboDrive_Recover_RightMechaArmForParking(uint8_t recover_speed){
                                               // apply only when arm is streched, use to recover from unknown states to parking
-// ------------------------------------------------- // right mecha arm op-codes, // speed >> ((superfast) 1 - 255 (very slow))
-// ------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------- Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//-------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   move_Servo_Bidirect(0,  0,   recover_speed, 1);
   move_Servo_Bidirect(4,  0,   recover_speed, 1);
   move_Servo_Bidirect(3,  0,   recover_speed, 1);
@@ -644,9 +650,25 @@ void roboDrive_RecoverRightArmForParking(uint8_t recover_speed){
   move_Servo_Bidirect(6, 30,   recover_speed, 1);
 }
 
-void roboDrive_ParkArms(uint8_t parking_speed){
-                                                     // ---------- park arms (lef/right) >> parked state (current draw ~ 0.6A)
-// ------------------------------------------------- // right mecha arm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Activate_BothMechaArms(uint8_t activation_speed){
+                        // ---------- Activate Both Mecha-Arms (left/right) >> Both MechaArms Ready/Armed (current draw ~ 0.6A)
+//------------------------------------------------------------- Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//-------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+  move_Servo_Bidirect(0, -10,  activation_speed, 1);
+  move_Servo_Bidirect(4, 105,  activation_speed, 1);
+  move_Servo_Bidirect(2, -45,  activation_speed, 1);
+//--------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
+  move_Servo_Bidirect(7,    0, activation_speed, 1);
+  move_Servo_Bidirect(11, 115, activation_speed, 1);
+  move_Servo_Bidirect(9,  -36, activation_speed, 1);
+}
+
+void roboDrive_Park_MechaArms(uint8_t parking_speed){
+                                  // ---------- Parking Both Mecha-Arms (left/right) >> Main Parked State (current draw ~ 0.6A)
+//------------------------------------------------------------- Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//-------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   move_Servo_Bidirect(6, 30,   parking_speed, 1);
   move_Servo_Bidirect(5,  0,   parking_speed, 1);
   move_Servo_Bidirect(0, -10,  parking_speed, 1);
@@ -654,7 +676,7 @@ void roboDrive_ParkArms(uint8_t parking_speed){
   move_Servo_Bidirect(4, 111,  parking_speed, 1);
   move_Servo_Bidirect(3,  53,  parking_speed, 1);
   move_Servo_Bidirect(1, -111, parking_speed, 1);
-// ------------------------------------------------------------------------------------------------ // left mecha arm op-codes
+//--------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   move_Servo_Bidirect(13, -25, parking_speed, 1);
   move_Servo_Bidirect(12,   0, parking_speed, 1);
   move_Servo_Bidirect(7,   0,  parking_speed, 1);
@@ -664,9 +686,11 @@ void roboDrive_ParkArms(uint8_t parking_speed){
   move_Servo_Bidirect(8,  100, parking_speed, 1);
 }
 
-void roboDrive_ParkLeftArm(uint8_t parking_speed){
-                                                     // ---------- park Left-MechaArm (left) >> parked state (current draw ~ 0.6A)
-// ------------------------------------------------------- // Left-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Park_LeftMechaArm(uint8_t parking_speed){
+                                             // ---------- Park Left-MechaArm (Left) >> Main Parked State (current draw ~ 0.6A)
+//------------------------------------------------------------- Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//-------------------------------------------------------------------------------------------------------------------------- //
+//--------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   move_Servo_Bidirect(13, -25, parking_speed, 1);
   move_Servo_Bidirect(12,   0, parking_speed, 1);
   move_Servo_Bidirect(7,   0,  parking_speed, 1);
@@ -676,9 +700,11 @@ void roboDrive_ParkLeftArm(uint8_t parking_speed){
   move_Servo_Bidirect(8,  100, parking_speed, 1);
 }
 
-void roboDrive_ParkRightArm(uint8_t parking_speed){
-                                                     // ---------- park Right-MechaArm (right) >> parked state (current draw ~ 0.6A)
-// -------------------------------------------------------- // Right-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Park_RightMechaArm(uint8_t parking_speed){
+                                           // ---------- Park Right-MechaArm (Right) >> Main Parked State (current draw ~ 0.6A)
+//------------------------------------------------------------- Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//-------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   move_Servo_Bidirect(6, 30,   parking_speed, 1);
   move_Servo_Bidirect(5,  0,   parking_speed, 1);
   move_Servo_Bidirect(0, -10,  parking_speed, 1);
@@ -688,9 +714,11 @@ void roboDrive_ParkRightArm(uint8_t parking_speed){
   move_Servo_Bidirect(1, -111, parking_speed, 1);
 }
 
-void roboDrive_DeployArmsState1(uint8_t deploy_speed){
-                                          // ------------- deploy arms (state_1) (lef/right) >> state 1 (current draw ~ 0.75A)
-// ------------------------------------------------- // right mecha arm op-codes,// speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Deploy_MechaArmsState1(uint8_t deploy_speed){
+                      // ---------- Deploy Both Mecha Arms to (State-1) (left/right) >> Working State-1 (current draw ~ 0.75A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   move_Servo_Bidirect(0, -10,   deploy_speed, 1);
   move_Servo_Bidirect(2, -78,   deploy_speed, 1);
   move_Servo_Bidirect(4, 111,   deploy_speed, 1);
@@ -698,7 +726,7 @@ void roboDrive_DeployArmsState1(uint8_t deploy_speed){
   move_Servo_Bidirect(1, -90,   deploy_speed, 1);
   move_Servo_Bidirect(5,  0,    deploy_speed, 1);
   move_Servo_Bidirect(6, 30,    deploy_speed, 1);
-// ---------------------------------------------------------------------------------------------- //  left mecha arm op-codes
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   move_Servo_Bidirect(7,    0,  deploy_speed, 1);
   move_Servo_Bidirect(9,  -70,  deploy_speed, 1);
   move_Servo_Bidirect(11, 125,  deploy_speed, 1);
@@ -708,9 +736,11 @@ void roboDrive_DeployArmsState1(uint8_t deploy_speed){
   move_Servo_Bidirect(13, -20,  deploy_speed, 1);
 }
 
-void roboDrive_DeployLeft_Arm_State1(uint8_t deploy_speed){
-                                          // -------------- deploy left arm (state_1) (left) >> state 1 (current draw ~ 0.75A)
-// ------------------------------------------------- // Left mecha arm op-codes, // speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Deploy_LeftMechaArmState1(uint8_t deploy_speed){
+                                   // ---------- Deploy Left-MechaArm (Left) >> Deployed Working State-1 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   move_Servo_Bidirect(7,    0,  deploy_speed, 1);
   move_Servo_Bidirect(9,  -70,  deploy_speed, 1);
   move_Servo_Bidirect(11, 125,  deploy_speed, 1);
@@ -720,9 +750,11 @@ void roboDrive_DeployLeft_Arm_State1(uint8_t deploy_speed){
   move_Servo_Bidirect(13, -20,  deploy_speed, 1);
 }
 
-void roboDrive_DeployRight_Arm_State1(uint8_t deploy_speed){
-                                          // ------------ deploy right arm (state_1) (right) >> state 1 (current draw ~ 0.75A)
-// ------------------------------------------------ // right mecha arm op-codes, // speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Deploy_Right_ArmState1(uint8_t deploy_speed){
+                                 // ---------- Deploy Right-MechaArm (Right) >> Deployed Working State-1 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   move_Servo_Bidirect(0, -10,   deploy_speed, 1);
   move_Servo_Bidirect(2, -78,   deploy_speed, 1);
   move_Servo_Bidirect(4, 111,   deploy_speed, 1);
@@ -732,12 +764,116 @@ void roboDrive_DeployRight_Arm_State1(uint8_t deploy_speed){
   move_Servo_Bidirect(6, 30,    deploy_speed, 1);
 }
 
-void roboDrive_DeployLeft_Arm_State4(uint8_t deploy_speed){
-                                           // ---------- Deploy Left-MechaArm (left) >> Deployed State-4 (current draw ~ 0.6A)
-// --------------------------------------------------- // Left-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Deploy_MechaArmsState2(uint8_t deploy_speed){
+                      // ---------- Deploy Both Mecha Arms to (State-2) (left/right) >> Working State-2 (current draw ~ 0.75A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+  move_Servo_Bidirect(0, -10,  deploy_speed, 1);
+  move_Servo_Bidirect(4,  85,  deploy_speed, 1);
+  move_Servo_Bidirect(2,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(3,  53,  deploy_speed, 1);
+  move_Servo_Bidirect(1, -90,  deploy_speed, 1);
+  move_Servo_Bidirect(5, -100, deploy_speed, 1);
+  move_Servo_Bidirect(6,  -50, deploy_speed, 1);
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
+  move_Servo_Bidirect(7,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(11, 90,  deploy_speed, 1);
+  move_Servo_Bidirect(9,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(10, 60,  deploy_speed, 1);
+  move_Servo_Bidirect(8,  74,  deploy_speed, 1);
+  move_Servo_Bidirect(12,  60, deploy_speed, 1);
+  move_Servo_Bidirect(13, -80, deploy_speed, 1);
+}
+
+void roboDrive_Deploy_RightMechaArmState2(uint8_t deploy_speed){
+                                 // ---------- Deploy Right-MechaArm (Right) >> Deployed Working State-2 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+  move_Servo_Bidirect(0, -10,  deploy_speed, 1);
+  move_Servo_Bidirect(4,  85,  deploy_speed, 1);
+  move_Servo_Bidirect(2,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(3,  53,  deploy_speed, 1);
+  move_Servo_Bidirect(1, -90,  deploy_speed, 1);
+  move_Servo_Bidirect(5, -100, deploy_speed, 1);
+  move_Servo_Bidirect(6,  -50, deploy_speed, 1);
+}
+
+void roboDrive_Deploy_LeftMechaArmState2(uint8_t deploy_speed){
+                                   // ---------- Deploy Left-MechaArm (Left) >> Deployed Working State-2 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
+  move_Servo_Bidirect(7,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(11, 90,  deploy_speed, 1);
+  move_Servo_Bidirect(9,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(10, 60,  deploy_speed, 1);
+  move_Servo_Bidirect(8,  74,  deploy_speed, 1);
+  move_Servo_Bidirect(12,  60, deploy_speed, 1);
+  move_Servo_Bidirect(13, -80, deploy_speed, 1);
+}
+
+void roboDrive_Deploy_MechaArmsState3(uint8_t deploy_speed){
+                      // ---------- Deploy Both Mecha Arms to (State-3) (left/right) >> Working State-3 (current draw ~ 0.75A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+  move_Servo_Bidirect(0, -10,  deploy_speed, 1);
+  move_Servo_Bidirect(4,  85,  deploy_speed, 1);
+  move_Servo_Bidirect(2,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(3,  53,  deploy_speed, 1);
+  move_Servo_Bidirect(1, -90,  deploy_speed, 1);
+  move_Servo_Bidirect(5,  0,   deploy_speed, 1);
+  move_Servo_Bidirect(6, 40,   deploy_speed, 1);
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
+  move_Servo_Bidirect(7,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(11, 90,  deploy_speed, 1);
+  move_Servo_Bidirect(9,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(10, 60,  deploy_speed, 1);
+  move_Servo_Bidirect(8,  74,  deploy_speed, 1);
+  move_Servo_Bidirect(12,  0,  deploy_speed, 1);
+  move_Servo_Bidirect(13, -8,  deploy_speed, 1);
+}
+
+void roboDrive_Deploy_RightMechaArmState3(uint8_t deploy_speed){
+                                 // ---------- Deploy Right-MechaArm (Right) >> Deployed Working State-3 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+  move_Servo_Bidirect(0, -10,  deploy_speed, 1);
+  move_Servo_Bidirect(4,  85,  deploy_speed, 1);
+  move_Servo_Bidirect(2,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(3,  53,  deploy_speed, 1);
+  move_Servo_Bidirect(1, -90,  deploy_speed, 1);
+  move_Servo_Bidirect(5,  0,   deploy_speed, 1);
+  move_Servo_Bidirect(6, 40,   deploy_speed, 1);
+}
+
+void roboDrive_Deploy_LeftMechaArmsState3(uint8_t deploy_speed){
+                                   // ---------- Deploy Left-MechaArm (Left) >> Deployed Working State-3 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
+  move_Servo_Bidirect(7,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(11, 90,  deploy_speed, 1);
+  move_Servo_Bidirect(9,   0,  deploy_speed, 1);
+  move_Servo_Bidirect(10, 60,  deploy_speed, 1);
+  move_Servo_Bidirect(8,  74,  deploy_speed, 1);
+  move_Servo_Bidirect(12,  0,  deploy_speed, 1);
+  move_Servo_Bidirect(13, -8,  deploy_speed, 1);
+}
+
+void roboDrive_Deploy_LeftMechaArmState4(uint8_t deploy_speed){
+                                   // ---------- Deploy Left-MechaArm (left) >> Deployed Working State-4 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  de_EnergizeStepper();
+//------------------------------------------------------------------------------------------------------ // Tower Rotation >>
   move_Servo_Bidirect(8,  60,   deploy_speed, 1);
   move_Servo_Bidirect(10, 0,    deploy_speed, 1);
   move_Servo_Bidirect(9,  0,    deploy_speed, 1);
@@ -748,17 +884,23 @@ void roboDrive_DeployLeft_Arm_State4(uint8_t deploy_speed){
   move_Servo_Bidirect(11, -75,  deploy_speed, 1);
   move_Servo_Bidirect(12, 0,    deploy_speed, 1);
   move_Servo_Bidirect(13, -80,  deploy_speed, 1);
+//------------------------------------------------------------------------------------------------------ // Tower Rotation <<
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  de_EnergizeStepper();
 }
 
-void roboDrive_ParkLeft_Arm_fromState4(uint8_t parking_speed){
-                                                // ---------- Park Left-MechaArm (left) >> Parked-State 4 (current draw ~ 0.6A)
-// ---------------------------------------------------- // Left-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+void roboDrive_Park_LeftMechaArmfromState4(uint8_t parking_speed){
+                               // ---------- Park Left-MechaArm from State-4 (left) >> Main Parked State (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
+  de_EnergizeStepper();
+//------------------------------------------------------------------------------------------------------ // Tower Rotation >>
   move_Servo_Bidirect(13, 10,  parking_speed, 1);
   move_Servo_Bidirect(12, 0,   parking_speed, 1);
   move_Servo_Bidirect(7,  0,   parking_speed, 1);
@@ -773,19 +915,23 @@ void roboDrive_ParkLeft_Arm_fromState4(uint8_t parking_speed){
   move_Servo_Bidirect(8,  110, parking_speed, 1);
   move_Servo_Bidirect(11, 125, parking_speed, 1);
   move_Servo_Bidirect(10, 54,  parking_speed, 1);
-  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
-  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
-  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
-}
-
-void roboDrive_DeployRight_Arm_State4(uint8_t deploy_speed){
-                                          // ---------- Deploy Right-MechaArm (Right) >> Deployed State-4 (current draw ~ 0.6A)
-// --------------------------------------------------- // Right-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
-
+//------------------------------------------------------------------------------------------------------ // Tower Rotation <<
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   de_EnergizeStepper();
+}
+
+void roboDrive_Deploy_RightMechaArmState4(uint8_t deploy_speed){
+                                 // ---------- Deploy Right-MechaArm (Right) >> Deployed Working State-4 (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
+  de_EnergizeStepper();
+//------------------------------------------------------------------------------------------------------ // Tower Rotation >>
   move_Servo_Bidirect(1, -70,  deploy_speed, 1);
   move_Servo_Bidirect(3,  0,   deploy_speed, 1);
   move_Servo_Bidirect(2,  0,   deploy_speed, 1);
@@ -796,6 +942,7 @@ void roboDrive_DeployRight_Arm_State4(uint8_t deploy_speed){
   move_Servo_Bidirect(3,  90,  deploy_speed, 1);
   move_Servo_Bidirect(6, -70,  deploy_speed, 1);
   move_Servo_Bidirect(5,  0,   deploy_speed, 1);
+//------------------------------------------------------------------------------------------------------ // Tower Rotation <<
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
@@ -803,12 +950,15 @@ void roboDrive_DeployRight_Arm_State4(uint8_t deploy_speed){
 }
 
 void roboDrive_ParkRight_Arm_fromState4(uint8_t parking_speed){
-                                              // ---------- Park Right-MechaArm (Right) >> Parked-State 4 (current draw ~ 0.6A)
-// ------------------------------------- ------------- // Right-MechaArm op-codes // speed >> ((superfast) 1 - 255 (very slow))
+                             // ---------- Park Right-MechaArm from State-4 (Right) >> Main Parked State (current draw ~ 0.6A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   stepperDrive_adapted(-(3 * stepper_speed), MIN_DELAY);
   de_EnergizeStepper();
+//------------------------------------------------------------------------------------------------------ // Tower Rotation >>
   move_Servo_Bidirect(6, 50,   parking_speed, 1);
   move_Servo_Bidirect(5, 0,    parking_speed, 1);
   move_Servo_Bidirect(0, -10,  parking_speed, 1);
@@ -823,126 +973,34 @@ void roboDrive_ParkRight_Arm_fromState4(uint8_t parking_speed){
   move_Servo_Bidirect(1, -122, parking_speed, 1);
   move_Servo_Bidirect(4, 116,  parking_speed, 1);
   move_Servo_Bidirect(3, 45,   parking_speed, 1);
+//------------------------------------------------------------------------------------------------------ // Tower Rotation >>
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   stepperDrive_adapted(3 * stepper_speed, MIN_DELAY);
   de_EnergizeStepper();
 }
 
-void roboDrive_DeployArmsState2(uint8_t deploy_speed){
-                                                 // -deploy arms (state_2) (lef/right) >> state 2 (current draw ~ 0.50-0.65A)
-// --------------------------------------------- // right mecha arm op-codes,   // speed >> ((superfast) 1 - 255 (very slow))
-  move_Servo_Bidirect(0, -10,  deploy_speed, 1);
-  move_Servo_Bidirect(4,  85,  deploy_speed, 1);
-  move_Servo_Bidirect(2,   0,  deploy_speed, 1);
-  move_Servo_Bidirect(3,  53,  deploy_speed, 1);
-  move_Servo_Bidirect(1, -90,  deploy_speed, 1);
-  move_Servo_Bidirect(5, -100, deploy_speed, 1);
-  move_Servo_Bidirect(6,  -50, deploy_speed, 1);
-// --------------------------------------------------------------------------------------------- //  left mecha arm op-codes
-  move_Servo_Bidirect(7,   0,  deploy_speed, 1);
-  move_Servo_Bidirect(11, 90,  deploy_speed, 1);
-  move_Servo_Bidirect(9,   0,  deploy_speed, 1);
-  move_Servo_Bidirect(10, 60,  deploy_speed, 1);
-  move_Servo_Bidirect(8,  74,  deploy_speed, 1);
-  move_Servo_Bidirect(12,  60, deploy_speed, 1);
-  move_Servo_Bidirect(13, -80, deploy_speed, 1);
-}
-
-void roboDrive_DeployArmsState3(uint8_t deploy_speed){
-                                                 // deploy arms (state_3) (lef/right) >> state 3 (current draw ~ 0.50-0.65A)
-// ----------------------------------------- --- // right mecha arm op-codes,  // speed >> ((superfast) 1 - 255 (very slow))
-  move_Servo_Bidirect(0, -10,  deploy_speed, 1);
-  move_Servo_Bidirect(4,  85,  deploy_speed, 1);
-  move_Servo_Bidirect(2,   0,  deploy_speed, 1);
-  move_Servo_Bidirect(3,  53,  deploy_speed, 1);
-  move_Servo_Bidirect(1, -90,  deploy_speed, 1);
-  move_Servo_Bidirect(5,  0,   deploy_speed, 1);
-  move_Servo_Bidirect(6, 40,   deploy_speed, 1);
-// -------------------------------------------------------------------------------------------------- //  left mecha arm op-codes
-  move_Servo_Bidirect(7,   0,  deploy_speed, 1);
-  move_Servo_Bidirect(11, 90,  deploy_speed, 1);
-  move_Servo_Bidirect(9,   0,  deploy_speed, 1);
-  move_Servo_Bidirect(10, 60,  deploy_speed, 1);
-  move_Servo_Bidirect(8,  74,  deploy_speed, 1);
-  move_Servo_Bidirect(12,  0,  deploy_speed, 1);
-  move_Servo_Bidirect(13, -8,  deploy_speed, 1);
-}
-
-void roboDrive_ActivateArms(uint8_t activation_speed){
-                                     //- activate both arms from parked state ((lef/right) >> state 4 (current draw ~ 0.68-0.70A)
-// ----------------------------------------------- // right mecha arm op-code,      // speed >> ((superfast) 0 - 255 (very slow))
-  move_Servo_Bidirect(0, -10,  activation_speed, 1);
-  move_Servo_Bidirect(4, 105,  activation_speed, 1);
-  move_Servo_Bidirect(2, -45,  activation_speed, 1);
-// ------------------------------------------------------------------------------------------------- //  left mecha arm op-codes
-  move_Servo_Bidirect(7,    0, activation_speed, 1);
-  move_Servo_Bidirect(11, 115, activation_speed, 1);
-  move_Servo_Bidirect(9,  -36, activation_speed, 1);
-}
-
-void roboDrive_LookUp(uint8_t speed){
-                                                                              // speed >> ((superfast) 1 - 255 (very slow))
-  move_Servo_Bidirect(14, 55, speed, 1);
-}
-
-void roboDrive_LookUp_Gradually(uint8_t speed){
-
-  uint8_t step = 4;
-  uint8_t servo_number = 14;
-
-  int8_t servo_number_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number);
-  if(servo_number_current_angle < 55){
-    move_Servo_Bidirect(servo_number, (servo_number_current_angle + step), speed, 1);
-  }
-  else{
-
-  }
-}
-
-void roboDrive_LookDown_Gradually(uint8_t speed){
-
-  uint8_t step = 4;
-  uint8_t servo_number = 14;
-
-  int8_t servo_number_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number);
-  if(servo_number_current_angle > -15){
-    move_Servo_Bidirect(servo_number, (servo_number_current_angle - step), speed, 1);
-  }
-  else{
-
-  }
-}
-
-void roboDrive_LookDown(uint8_t speed){
-                                                                              // speed >> ((superfast) 1 - 255 (very slow))
-  move_Servo_Bidirect(14, -15, speed, 1);
-}
-
-void roboDrive_LookUpFront(uint8_t speed){
-                                                                              // speed >> ((superfast) 1 - 255 (very slow))
-  move_Servo_Bidirect(14, 10, speed, 1);
-}
-
-void roboDrive_LiftUpArms(uint8_t speed){
-                            // ------------- lift-up arms (^_^) show-off ((lef/right) >> state 4 (current draw ~ 0.68-0.70A)
-// ------------------------------------------------ // right mecha-arm op-code,   speed >> ((superfast) 0 - 255 (very slow))
+void roboDrive_LiftUp_BothMechaArms(uint8_t speed){
+                  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   move_Servo_Bidirect(0, -10, speed, 1);
   move_Servo_Bidirect(4, 105, speed, 1);
   move_Servo_Bidirect(2,   0, speed, 1);
   move_Servo_Bidirect(1, -90, speed, 1);
   move_Servo_Bidirect(3,  -8, speed, 1);
   move_Servo_Bidirect(4,   0, speed, 1);
-// ----------- waive mecha-arm ------------------------------------------------------------------------------------------//
+//------------ waive mecha-arm ---------------------------------------------------------------------------------------------//
   move_Servo_Bidirect(0,  45, speed, 1);
   move_Servo_Bidirect(0, -10, speed, 1);
   move_Servo_Bidirect(0,  45, speed, 1);
   move_Servo_Bidirect(0, -10, speed, 1);
-// ----------- nodd tower ----------------------------------------------------------------------------------------------//
+//------------ nodd tower --------------------------------------------------------------------------------------------------//
   roboDrive_LookUp(speed);
   roboDrive_LookDown(speed);
   roboDrive_LookUpFront(speed);
-// ------------------------------------------------------------------------------------------- //  left mecha arm op-codes
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
   move_Servo_Bidirect(7,   0,  speed, 1);
   move_Servo_Bidirect(11, 115, speed, 1);
   move_Servo_Bidirect(9,    0, speed, 1);
@@ -950,56 +1008,61 @@ void roboDrive_LiftUpArms(uint8_t speed){
   move_Servo_Bidirect(10,   0, speed, 1);
   move_Servo_Bidirect(11,   0, speed, 1);
 }
-
+//##########################################################################################################################
+// checked/ formatted
 void roboDrive_move_Forward_LeftMechaArm(uint8_t speed){
+                             // ------------ Move Left MechaArm Forward, (left) >> Stretch to Grab (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//-------------------------------------------------------------------------------------------------- // Left-MechaArm op-codes
 
-  uint8_t step_1 = 4;
-  uint8_t step_2 = 4;
-  uint8_t step_3 = 3;
-  uint8_t step_4 = 3;
+  uint8_t step_1 = 4;                                                                      //----- Servo movement step size, individual for each servo
+  uint8_t step_2 = 4;                                                                      //----- Servo movement step size, individual for each servo
+  uint8_t step_3 = 3;                                                                      //----- Servo movement step size, individual for each servo
+  uint8_t step_4 = 3;                                                                      //----- Servo movement step size, individual for each servo
 
-  uint8_t servo_number_1 = 8;
-  uint8_t servo_number_2 = 9;
-  uint8_t servo_number_3 = 10;
-  uint8_t servo_number_4 = 11;
+  uint8_t servo_number_1 = 8;                                                           //----- Servo number inside MechaArm participating in movement
+  uint8_t servo_number_2 = 9;                                                           //----- Servo number inside MechaArm participating in movement
+  uint8_t servo_number_3 = 10;                                                          //----- Servo number inside MechaArm participating in movement
+  uint8_t servo_number_4 = 11;                                                          //----- Servo number inside MechaArm participating in movement
 
-  int8_t servo_number_1_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_1);
-  int8_t servo_number_2_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_2);
-  int8_t servo_number_3_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_3);
-  int8_t servo_number_4_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_4);
+  int8_t servo_number_1_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_1); //----- Reading angle values from FRAM for each servo
+  int8_t servo_number_2_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_2); //----- Reading angle values from FRAM for each servo
+  int8_t servo_number_3_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_3); //----- Reading angle values from FRAM for each servo
+  int8_t servo_number_4_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number_4); //----- Reading angle values from FRAM for each servo
 
-  if(servo_number_1_current_angle > 36){
+  if(servo_number_1_current_angle > 36){                             //----- Clamping angle values for each servo, to be able to move inside the range
     move_Servo_Bidirect(servo_number_1, (servo_number_1_current_angle - step_1), speed, 1);
   }
-  else{
-
+  else{                                                              //---------------- If defined angle limits reached, stay there, don't do anything
   }
 
-  if(servo_number_2_current_angle < 40){
+  if(servo_number_2_current_angle < 40){                             //----- Clamping angle values for each servo, to be able to move inside the range
     move_Servo_Bidirect(servo_number_2, (servo_number_2_current_angle + step_2), speed, 1);
   }
-  else{
-
+  else{                                                              //---------------- If defined angle limits reached, stay there, don't do anything
   }
 
-  if(servo_number_3_current_angle > 10){
+  if(servo_number_3_current_angle > 10){                             //----- Clamping angle values for each servo, to be able to move inside the range
     move_Servo_Bidirect(servo_number_3, (servo_number_3_current_angle - step_3), speed, 1);
   }
 
-  else{
-
+  else{                                                              //---------------- If defined angle limits reached, stay there, don't do anything
   }
 
-  if(servo_number_4_current_angle > 0){
+  if(servo_number_4_current_angle > 0){                              //----- Clamping angle values for each servo, to be able to move inside the range
     move_Servo_Bidirect(servo_number_4, (servo_number_4_current_angle - step_4), speed, 1);
   }
 
-  else{
-
+  else{                                                              //---------------- If defined angle limits reached, stay there, don't do anything
   }
 }
 
 void roboDrive_move_Forward_RightMechaArm(uint8_t speed){
+                           // ------------ Move Right MechaArm Forward, (Right) >> Stretch to Grab (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step_1 = 4;
   uint8_t step_2 = 4;
@@ -1020,14 +1083,12 @@ void roboDrive_move_Forward_RightMechaArm(uint8_t speed){
     move_Servo_Bidirect(servo_number_1, (servo_number_1_current_angle + step_1), speed, 1);
   }
   else{
-
   }
 
   if(servo_number_2_current_angle < 40){
     move_Servo_Bidirect(servo_number_2, (servo_number_2_current_angle + step_2), speed, 1);
   }
   else{
-
   }
 
   if(servo_number_3_current_angle > 10){
@@ -1035,7 +1096,6 @@ void roboDrive_move_Forward_RightMechaArm(uint8_t speed){
   }
 
   else{
-
   }
 
   if(servo_number_4_current_angle > 0){
@@ -1043,11 +1103,14 @@ void roboDrive_move_Forward_RightMechaArm(uint8_t speed){
   }
 
   else{
-
   }
 }
 
 void roboDrive_Crane_LeftArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step_1 = 4;
   uint8_t step_2 = 4;
@@ -1068,14 +1131,12 @@ void roboDrive_Crane_LeftArm(uint8_t speed){
     move_Servo_Bidirect(servo_number_1, (servo_number_1_current_angle + step_1), speed, 1);
   }
   else{
-
   }
 
   if(servo_number_2_current_angle < 40){
     move_Servo_Bidirect(servo_number_2, (servo_number_2_current_angle + step_2), speed, 1);
   }
   else{
-
   }
 
   if(servo_number_3_current_angle > 10){
@@ -1083,7 +1144,6 @@ void roboDrive_Crane_LeftArm(uint8_t speed){
   }
 
   else{
-
   }
 
   if(servo_number_4_current_angle > 0){
@@ -1091,11 +1151,14 @@ void roboDrive_Crane_LeftArm(uint8_t speed){
   }
 
   else{
-
   }
 }
 
 void roboDrive_Crane_RightArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step_1 = 4;
   uint8_t step_2 = 4;
@@ -1115,15 +1178,15 @@ void roboDrive_Crane_RightArm(uint8_t speed){
   if(servo_number_1_current_angle > -100){
     move_Servo_Bidirect(servo_number_1, (servo_number_1_current_angle - step_1), speed, 1);
   }
-  else{
 
+  else{
   }
 
   if(servo_number_2_current_angle < 40){
     move_Servo_Bidirect(servo_number_2, (servo_number_2_current_angle + step_2), speed, 1);
   }
-  else{
 
+  else{
   }
 
   if(servo_number_3_current_angle > 10){
@@ -1131,7 +1194,6 @@ void roboDrive_Crane_RightArm(uint8_t speed){
   }
 
   else{
-
   }
 
   if(servo_number_4_current_angle > 0){
@@ -1139,11 +1201,14 @@ void roboDrive_Crane_RightArm(uint8_t speed){
   }
 
   else{
-
   }
 }
 
 void roboDrive_move_RightMechaArm_CW(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 0;
@@ -1151,11 +1216,16 @@ void roboDrive_move_RightMechaArm_CW(uint8_t speed){
   if(servo_current_angle < 125){
     move_Servo_Bidirect(servo_number, (servo_current_angle + step), speed, 1);
   }
+
   else{
   }
 }
 
 void roboDrive_move_RightMechaArm_CCW(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 0;
@@ -1163,11 +1233,16 @@ void roboDrive_move_RightMechaArm_CCW(uint8_t speed){
   if(servo_current_angle > -10){
     move_Servo_Bidirect(servo_number, (servo_current_angle - step), speed, 1);
   }
+
   else{
   }
 }
 
 void roboDrive_move_LeftMechaArm_CW(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 7;
@@ -1175,11 +1250,16 @@ void roboDrive_move_LeftMechaArm_CW(uint8_t speed){
   if(servo_current_angle < 10){
     move_Servo_Bidirect(servo_number, (servo_current_angle + step), speed, 1);
   }
+
   else{
   }
 }
 
 void roboDrive_move_LeftMechaArm_CCW(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 7;
@@ -1187,11 +1267,16 @@ void roboDrive_move_LeftMechaArm_CCW(uint8_t speed){
   if(servo_current_angle > -125){
     move_Servo_Bidirect(servo_number, (servo_current_angle - step), speed, 1);
   }
+
   else{
   }
 }
 
 void roboDrive_CloseRightGripper_gradually(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 6;
@@ -1199,11 +1284,16 @@ void roboDrive_CloseRightGripper_gradually(uint8_t speed){
   if(servo_current_angle < 60){
     move_Servo_Bidirect(servo_number, (servo_current_angle + step), speed, 1);
   }
+
   else{
   }
 }
 
 void roboDrive_OpenRightGripper_gradually(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 6;
@@ -1211,11 +1301,16 @@ void roboDrive_OpenRightGripper_gradually(uint8_t speed){
   if(servo_current_angle > -65){
     move_Servo_Bidirect(servo_number, (servo_current_angle - step), speed, 1);
   }
+
   else{
   }
 }
 
 void roboDrive_CloseLeftGripper_gradually(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 13;
@@ -1223,11 +1318,16 @@ void roboDrive_CloseLeftGripper_gradually(uint8_t speed){
   if(servo_current_angle < 10){
     move_Servo_Bidirect(servo_number, (servo_current_angle + step), speed, 1);
   }
+
   else{
   }
 }
 
 void roboDrive_OpenLeftGripper_gradually(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 13;
@@ -1235,11 +1335,16 @@ void roboDrive_OpenLeftGripper_gradually(uint8_t speed){
   if(servo_current_angle > -120){
     move_Servo_Bidirect(servo_number, (servo_current_angle - step), speed, 1);
   }
+
   else{
   }
 }
 
 bool roboDrive_OpenGripperRightMechaArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
                                             // positive angles "close" gripper, negative angles "open" the gripper
                                                                      // speed >> ((superfast) 1 - 255 (very slow))
   if(gripper_State != 1){
@@ -1255,6 +1360,10 @@ bool roboDrive_OpenGripperRightMechaArm(uint8_t speed){
 }
 
 bool roboDrive_OpenGripperLeftMechaArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
                                             // positive angles "close" gripper, negative angles "open" the gripper
                                                                      // speed >> ((superfast) 1 - 255 (very slow))
   if(gripper_State != 1){
@@ -1270,6 +1379,10 @@ bool roboDrive_OpenGripperLeftMechaArm(uint8_t speed){
 }
 
 void roboDrive_Rotate_CW_GripperRightMechaArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 5;
@@ -1282,6 +1395,10 @@ void roboDrive_Rotate_CW_GripperRightMechaArm(uint8_t speed){
 }
 
 void roboDrive_Rotate_CCW_GripperRightMechaArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 5;
@@ -1294,6 +1411,10 @@ void roboDrive_Rotate_CCW_GripperRightMechaArm(uint8_t speed){
 }
 
 void roboDrive_Rotate_CW_GripperLeftMechaArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 12;
@@ -1306,6 +1427,10 @@ void roboDrive_Rotate_CW_GripperLeftMechaArm(uint8_t speed){
 }
 
 void roboDrive_Rotate_CCW_GripperLeftMechaArm(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
 
   uint8_t step = 5;
   uint8_t servo_number = 12;
@@ -1318,6 +1443,10 @@ void roboDrive_Rotate_CCW_GripperLeftMechaArm(uint8_t speed){
 }
 
 void roboDrive_Deploy_FlatSurfaceProbe(uint8_t deploy_speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
   // -deploy left-arm with test-probe (left) >> state probe 90° (current draw ~     )
 // --------------------------------------------- // right mecha arm op-codes,   // speed >> ((superfast) 1 - 255 (very slow))
 // move_Servo_Bidirect(0, -10,  deploy_speed, 1);
@@ -1339,9 +1468,78 @@ move_Servo_Bidirect(9,  120,  deploy_speed, 1);
 move_Servo_Bidirect(12,  60, deploy_speed, 1);
 move_Servo_Bidirect(13, -80, deploy_speed, 1);
 }
-// ----------------------------------- Arm Control ---------------------------------------------------------//
-// ---------------------------------------------------------------------------------------------------------//
-// ----------------------------------- Automatic Mode ------------------------------------------------------//
+//----------------------------------- Updated Mecha-Arms Control Functions D.Z. ---------------------------------------------//
+//----------------------------------- Mecha-Arm Control and inverse-Kinematics  ---------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------//
+// ------------------------------------------ Tower/MastCam Control ---------------------------------------------------------//
+void roboDrive_LookUp(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+                                                                               // speed >> ((superfast) 1 - 255 (very slow))
+  move_Servo_Bidirect(14, 55, speed, 1);
+}
+
+void roboDrive_LookUp_Gradually(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+
+  uint8_t step = 4;
+  uint8_t servo_number = 14;
+
+  int8_t servo_number_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number);
+  if(servo_number_current_angle < 55){
+    move_Servo_Bidirect(servo_number, (servo_number_current_angle + step), speed, 1);
+  }
+  else{
+
+  }
+}
+
+void roboDrive_LookDown_Gradually(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+
+  uint8_t step = 4;
+  uint8_t servo_number = 14;
+
+  int8_t servo_number_current_angle = FRAM_readByte(SERVOS_POSITION_ADDRESS + servo_number);
+  if(servo_number_current_angle > -15){
+    move_Servo_Bidirect(servo_number, (servo_number_current_angle - step), speed, 1);
+  }
+  else{
+
+  }
+}
+
+void roboDrive_LookDown(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+                                                                              // speed >> ((superfast) 1 - 255 (very slow))
+  move_Servo_Bidirect(14, -15, speed, 1);
+}
+
+void roboDrive_LookUpFront(uint8_t speed){
+  // ------------- Lift-Up Both Mecha Arms!(^_^), Show-Off (left/right) >> state-X (current draw ~ 0.68-0.70A)
+//------------------------------------------------------------ Mecha-Arm movemement speed >> ((superfast) 1 - 255 (very slow))
+//------------------------------------------------------------------------------------------------------------------------- //
+//------------------------------------------------------------------------------------------------- // Right-MechaArm op-codes
+                                                                              // speed >> ((superfast) 1 - 255 (very slow))
+  move_Servo_Bidirect(14, 10, speed, 1);
+}
+//---------------------------------------------------------------------------------------------------------------------------//
+// ------------------------------------------ Tower/MastCam Control ---------------------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------//
+// --------------------------------------------- Automatic Mode -------------------------------------------------------------//
 void automatic_Drive(void){                // obstacle avoidance sub-routine, exploits IRED-sensor to navigate
 
     uint16_t pingData[8];
@@ -2387,13 +2585,13 @@ void pcLinkSerial(void){                         // computer link!, function to 
                 case '3' :                        // ------------- deploy arms (state_3) (left/right) >> state 3 (current draw ~ 0.60-0.68A)
                     roboDrive_DeployArmsState3(servo_speed_mecha_arms);                        // speed >> ((superfast) 0 - 255 (very slow))
                         break;
-                case ',' :                    // ------------- deploy left-Mecha Arm (state_4) (left) >> state-4 (current draw ~ 0.60-0.68A)
+                case ',' :                    // ------------- deploy left-Mecha Arm (state_4) (left) >> state-4 (current draw ~ 1.30-1.68A)
                     roboDrive_DeployLeft_Arm_State4(servo_speed_mecha_arms);                   // speed >> ((superfast) 0 - 255 (very slow))
                         break;
                 case '.' :                          // -------- park left-Mecha Arm (state_4) (left) >> parked state-4 (current draw ~ 0.6A)
                     roboDrive_ParkLeft_Arm_fromState4(servo_speed_mecha_arms);                 // speed >> ((superfast) 0 - 255 (very slow))
                         break;
-                case '<' :                  // ------------- deploy Right-Mecha Arm (state_4) (Right) >> state-4 (current draw ~ 0.60-0.68A)
+                case '<' :                  // ------------- deploy Right-Mecha Arm (state_4) (Right) >> state-4 (current draw ~ 1.30-1.68A)
                     roboDrive_DeployRight_Arm_State4(servo_speed_mecha_arms);                  // speed >> ((superfast) 0 - 255 (very slow))
                         break;
                 case 'y' :                        // -------- park Right-Mecha Arm (state_4) (Right) >> parked state-4 (current draw ~ 0.6A)
@@ -2858,7 +3056,7 @@ int main(void){
         }
         lcd_clear();
         i2cStop();
-        for(int i = 80; i < 190; i=i+1){
+        for(int i = 80; i < 190; i = i + 1){
             runServo_onPCA9685(0, i);
             _delay_ms(7);
         }
